@@ -1,11 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
+import Button from '../Button';
+import { SuccessModalProps } from '../../utils/interfaces';
 
-interface SuccessModalProps {
-  isOpen: boolean;
-  onRequestClose: () => void;
-  successMessage: string;
-}
+
 
 const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onRequestClose, successMessage }) => {
   return (
@@ -18,12 +16,9 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onRequestClose, suc
     >
       <h2 className="text-xl font-bold mb-4 text-center">Éxito</h2>
       <p>{successMessage}</p>
-      <button
-        onClick={onRequestClose}
-        className="mt-4 bg-green-500 text-white py-2 px-4 rounded mx-auto block"
-      >
-        Cerrar
-      </button>
+      <div className="py-2 px-4 rounded mx-auto flex justify-center items-center" >
+         <Button onClick={onRequestClose}>Cerrar</Button>
+      </div>
     </Modal>
   );
 };

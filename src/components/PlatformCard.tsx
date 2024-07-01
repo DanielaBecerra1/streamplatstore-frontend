@@ -1,17 +1,24 @@
 import React from 'react';
 import { PlatformCardProps } from '../utils/interfaces';
+import { useNavigate } from 'react-router-dom';
+import Button from './Button';
 
+const PlatformCard: React.FC<PlatformCardProps> = ({ name, available, price, imageSrc, onClick }) => {
+  const navigate = useNavigate();
 
-const PlatformCard: React.FC<PlatformCardProps> = ({ name, description, available, price, onClick }) => {
+  const handleRent = () => {
+    navigate('/rent-account');
+  };
+
   return (
-    <div className="p-4 border border-gray-300 rounded-lg shadow-md mb-4">
-      <h2 className="text-xl font-semibold mb-2">{name}</h2>
-      <p>{description}</p>
-      <p>Available: {available ? 'Yes' : 'No'}</p>
-      <p>Price: ${price}</p>
-      <button onClick={onClick} className="mt-2 text-blue-500 hover:underline">
-        Ver detalles
-      </button>
+    <div className="flex border rounded-lg p-4 mb-4">
+      <img src={imageSrc} alt={name} className="w-20 h-20 object-contain mr-4" />
+      <div className="flex flex-col justify-between">
+        <h3 className="text-lg font-semibold">{name}</h3>
+        <p>Price: ${price}</p>
+        <p>Available: {available ? 'Yes' : 'No'}</p>
+        <Button onClick={handleRent}>Adquirir Plataforma</Button>
+      </div>
     </div>
   );
 };

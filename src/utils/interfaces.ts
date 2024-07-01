@@ -3,7 +3,7 @@ export interface Platform {
   name: string;
   available: boolean;
   price: number;
-  description: string;
+  imageSrc: string;
 }
 
 export interface Account {
@@ -12,19 +12,14 @@ export interface Account {
   duration: number;
 }
 
-export interface AccountCardProps {
-  platform: string;
-  username: string;
-  password: string;
-  available: boolean;
-  onClick: () => void;
-}
+
 
 export interface PlatformCardProps {
+    id: number;
     name: string;
-    description: string;
     available: boolean;
     price: number;
+    imageSrc: any;
     onClick: () => void;
 }
 
@@ -42,4 +37,32 @@ export interface ErrorModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
   errorMessage: string;
+}
+
+export interface SearchBarProps {
+  onSearch: (query: string) => void;
+  onKeyPress: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+}
+
+export interface ButtonProps {
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+export interface SuccessModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  successMessage: string;
+}
+
+export interface ModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  children: React.ReactNode;
+}
+
+export interface PlatformFormModalProps {
+  platform?: Platform | null;
+  onSubmit: (platform: Platform) => void;
+  onClose: () => void;
 }

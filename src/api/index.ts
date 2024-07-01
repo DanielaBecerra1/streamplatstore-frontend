@@ -1,4 +1,4 @@
-import { Account } from "../utils/interfaces";
+import { Account, Platform } from "../utils/interfaces";
 
 const API_BASE_URL_OPERADOR = 'http://localhost:8083';
 const API_BASE_URL_BUSCADOR = 'http://localhost:8080';
@@ -25,7 +25,7 @@ export const rentAccount = async (data: Account) => {
   return response.json();
 };
 
-export const findAllPlatforms = async () => {
+export const findAllPlatforms = async (): Promise<Platform[]> => {
   const response = await fetch(`${API_BASE_URL_BUSCADOR}/findAllPlatforms`);
   return response.json();
 };
@@ -71,5 +71,13 @@ export const deletePlatform = async (id: number) => {
   const response = await fetch(`${API_BASE_URL_BUSCADOR}/deletePlatform/${id}`, {
     method: 'DELETE',
   });
-  return response.json();
+  if (response.ok) {
+    try {
+      return await response.json();
+    } catch (e) {
+      return { status: 'success' };
+    }
+  } else {
+    throw new Error('Error eliminando la plataforma');
+  }
 };

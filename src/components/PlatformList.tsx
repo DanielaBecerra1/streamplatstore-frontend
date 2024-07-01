@@ -1,17 +1,18 @@
 import React from 'react';
 import PlatformCard from './PlatformCard';
 import { Platform } from '../utils/interfaces';
+import imageMap from '../utils/imageMap';
 
 const PlatformList: React.FC<{ platforms: Platform[] }> = ({ platforms }) => {
   return (
     <div>
       {platforms.map(platform => (
         <PlatformCard
-          key={platform.id}
+          id={platform.id}
           name={platform.name}
-          description={platform.description}
           available={platform.available}
           price={platform.price}
+          imageSrc={imageMap[platform.name] || 'src/assets/default.jpg'}
           onClick={() => {}}
         />
       ))}

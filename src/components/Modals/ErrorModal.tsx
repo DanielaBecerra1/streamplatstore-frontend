@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { ErrorModalProps } from '../../utils/interfaces';
+import Button from '../Button';
 
 
 
@@ -15,12 +16,10 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, onRequestClose, errorMe
     >
       <h2 className="text-xl font-bold mb-4 text-center">Error</h2>
       <p>{errorMessage}</p>
-      <button
-        onClick={onRequestClose}
-        className="mt-4 bg-red-500 text-white py-2 px-4 rounded mx-auto block"
-      >
-        Close
-      </button>
+      <div className="py-2 px-4 rounded mx-auto flex justify-center items-center" >
+         <Button onClick={onRequestClose}>Aceptar</Button>
+      </div>
+
     </Modal>
   );
 };
