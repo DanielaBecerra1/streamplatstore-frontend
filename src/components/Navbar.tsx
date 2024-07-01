@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex justify-between">
         <Link to="/" className="text-xl font-bold">StreamPlatStore</Link>
         <div>
-          <Link to="/search" className="mr-4">Buscar</Link>
+          <Link to="/search" className="mr-4">Buscar tus Plataformas</Link>
         </div>
       </div>
     </nav>

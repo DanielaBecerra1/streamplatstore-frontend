@@ -1,3 +1,5 @@
+import { Account } from "../utils/interfaces";
+
 const API_BASE_URL_OPERADOR = 'http://localhost:8083';
 const API_BASE_URL_BUSCADOR = 'http://localhost:8080';
 
@@ -12,7 +14,7 @@ export const registerPurchase = async (data: any) => {
   return response.json();
 };
 
-export const rentAccount = async (data: any) => {
+export const rentAccount = async (data: Account) => {
   const response = await fetch(`${API_BASE_URL_OPERADOR}/rentAccount`, {
     method: 'POST',
     headers: {
@@ -25,6 +27,11 @@ export const rentAccount = async (data: any) => {
 
 export const findAllPlatforms = async () => {
   const response = await fetch(`${API_BASE_URL_BUSCADOR}/findAllPlatforms`);
+  return response.json();
+};
+
+export const findByid = async (id: number) => {
+  const response = await fetch(`${API_BASE_URL_BUSCADOR}/findByid/${id}`);
   return response.json();
 };
 

@@ -7,10 +7,9 @@ export interface Platform {
 }
 
 export interface Account {
-  platform: string;
-  username: string;
-  password: string;
-  available: boolean;
+  id: number;
+  platformName: string;
+  duration: number;
 }
 
 export interface AccountCardProps {
@@ -38,9 +37,9 @@ export interface PlatformDetailsProps {
     };
   }
 
-export interface Account {
-  platform: string;
-  username: string;
-  password: string;
-  available: boolean;
+
+export interface ErrorModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  errorMessage: string;
 }
